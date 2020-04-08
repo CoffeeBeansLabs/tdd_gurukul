@@ -8,10 +8,9 @@ public class MeasurementTest {
         Measurement hunderedCm = new Measurement(100,Unit.CENTIMETER);
         Measurement oneMeter   =  new Measurement(1,Unit.METER);
 
-        Boolean result = hunderedCm.isEqualTo(oneMeter);
-
-        assertEquals(true,result);
+        assertEquals(hunderedCm,oneMeter);
     }
+
 
     @Test
     public  void  isEqualTo_shouldReturnTrue_given1000gmAnd1Kg(){
@@ -19,9 +18,7 @@ public class MeasurementTest {
         Measurement thousandGram = new Measurement(1000,Unit.GRAM);
         Measurement oneKiloGram   =  new Measurement(1,Unit.KILOGRAM);
 
-        Boolean result = thousandGram.isEqualTo(oneKiloGram);
-
-        assertEquals(true,result);
+        assertEquals(thousandGram,oneKiloGram);
     }
 
     @Test
@@ -30,9 +27,7 @@ public class MeasurementTest {
         Measurement thousandMeter = new Measurement(1000,Unit.METER);
         Measurement oneKilometer  =  new Measurement(1,Unit.KILOMETER);
 
-        Boolean result = thousandMeter.isEqualTo(oneKilometer);
-
-        assertEquals(true,result);
+        assertEquals(thousandMeter,oneKilometer);
     }
 
     @Test
@@ -41,9 +36,7 @@ public class MeasurementTest {
         Measurement hundredMeter = new Measurement(100,Unit.METER);
         Measurement oneKilometer   =  new Measurement(1,Unit.KILOMETER);
 
-        Boolean result = hundredMeter.isEqualTo(oneKilometer);
-
-        assertEquals(false,result);
+        assertEquals(hundredMeter,oneKilometer);
     }
 
     @Test
@@ -52,8 +45,6 @@ public class MeasurementTest {
         Measurement thousandMeter = new Measurement(-1000,Unit.METER);
         Measurement oneKilometer   =  new Measurement(1,Unit.KILOMETER);
 
-        Boolean result = thousandMeter.isEqualTo(oneKilometer);
-
-        assertEquals(false,result);
+        assertEquals(thousandMeter,oneKilometer);
     }
 }

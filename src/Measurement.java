@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Measurement {
 
     private final double value;
@@ -13,4 +15,13 @@ public class Measurement {
                 .unit.convertOneUnitToAnother(this.value,anotherMeasure.unit);
         return anotherMeasure.value == result;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Measurement that = (Measurement) o;
+        return this.isEqualTo(that);
+    }
+
 }
