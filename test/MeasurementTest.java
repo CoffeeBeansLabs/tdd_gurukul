@@ -24,5 +24,36 @@ public class MeasurementTest {
         assertEquals(true,result);
     }
 
-    
+    @Test
+    public  void  isEqualTo_shouldReturnTrue_given1000MeterAnd1Kilometer(){
+
+        Measurement thousandMeter = new Measurement(1000,Unit.METER);
+        Measurement oneKilometer  =  new Measurement(1,Unit.KILOMETER);
+
+        Boolean result = thousandMeter.isEqualTo(oneKilometer);
+
+        assertEquals(true,result);
+    }
+
+    @Test
+    public  void  isEqualTo_shouldReturnFalse_given100MeterAnd1Kilometer(){
+
+        Measurement thousandMeter = new Measurement(100,Unit.METER);
+        Measurement oneKilometer   =  new Measurement(1,Unit.KILOMETER);
+
+        Boolean result = thousandMeter.isEqualTo(oneKilometer);
+
+        assertEquals(false,result);
+    }
+
+    @Test
+    public  void  isEqualTo_shouldReturnFalse_givenMinus1000MeterAnd1Kilometer(){
+
+        Measurement thousandMeter = new Measurement(-1000,Unit.METER);
+        Measurement oneKilometer   =  new Measurement(1,Unit.KILOMETER);
+
+        Boolean result = thousandMeter.isEqualTo(oneKilometer);
+
+        assertEquals(false,result);
+    }
 }
