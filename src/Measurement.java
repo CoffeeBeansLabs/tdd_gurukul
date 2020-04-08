@@ -9,8 +9,8 @@ public class Measurement {
     }
 
     public Boolean isEqualTo(Measurement anotherMeasure) {
-        double result = anotherMeasure
-                .unit.convertOneUnitToAnother(anotherMeasure.value,this.unit);
-        return this.value == result;
+        int result = this
+                .unit.convertOneUnitToAnother(this.value,anotherMeasure.unit);
+        return anotherMeasure.value == result;
     }
 }

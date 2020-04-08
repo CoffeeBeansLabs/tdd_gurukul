@@ -38,10 +38,10 @@ public class MeasurementTest {
     @Test
     public  void  isEqualTo_shouldReturnFalse_given100MeterAnd1Kilometer(){
 
-        Measurement thousandMeter = new Measurement(100,Unit.METER);
+        Measurement hundredMeter = new Measurement(100,Unit.METER);
         Measurement oneKilometer   =  new Measurement(1,Unit.KILOMETER);
 
-        Boolean result = thousandMeter.isEqualTo(oneKilometer);
+        Boolean result = hundredMeter.isEqualTo(oneKilometer);
 
         assertEquals(false,result);
     }

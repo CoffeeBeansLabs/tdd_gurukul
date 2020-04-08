@@ -8,7 +8,7 @@ public  enum Unit{
         unitFactor = factor;
     }
 
-    public double convertOneUnitToAnother(double value ,Unit anotherUnit) {
-        return  Math.ceil((value * anotherUnit.unitFactor)/this.unitFactor);
+    public int convertOneUnitToAnother(double value ,Unit anotherUnit) {
+        return (int) ((value * anotherUnit.unitFactor)/this.unitFactor);
     }
 }
