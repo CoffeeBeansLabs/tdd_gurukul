@@ -1,10 +1,16 @@
 public enum Unit {
-    Meter(0.01), Centimeter(1), KILOMETER(0.00001), GM(1), KILOGRAM(0.001);
+    Meter(0.01, UnitType.DISTANCE), Centimeter(1,  UnitType.DISTANCE), KILOMETER(0.00001,  UnitType.DISTANCE), GM(1,  UnitType.WEIGHT), KILOGRAM(0.001,  UnitType.DISTANCE);
 
     double factor;
+    private UnitType unitType;
 
-    Unit(double factor) {
+    Unit(double factor, UnitType unitType) {
         this.factor = factor;
+        this.unitType = unitType;
+    }
+
+    public UnitType getUnitType() {
+        return unitType;
     }
 //
 //    public float getCentimterUnitFactor(int value) {
