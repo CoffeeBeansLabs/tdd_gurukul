@@ -26,6 +26,3 @@ public class Measurement {
 
 }
 
-public class InvalidUnitComparisonException extends RuntimeException { 
-
-}

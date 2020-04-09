@@ -17,4 +17,8 @@ public  enum Unit{
     public int convertOneUnitToAnother(double value ,Unit anotherUnit) {
         return (int) ((value * anotherUnit.unitFactor)/this.unitFactor);
     }
+
+    public int convertToCentimeter(int value) {
+        return 0;
+    }
 }
