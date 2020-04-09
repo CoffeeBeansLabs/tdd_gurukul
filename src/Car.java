@@ -1,7 +1,7 @@
 public class Car {
 
 
-    private String carNumber;
+    public String carNumber;
 
     Car (String number){
         this.carNumber = number;
