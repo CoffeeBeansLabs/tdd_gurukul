@@ -12,7 +12,7 @@ public class Measurement {
 
     public Boolean isEqualTo(Measurement anotherMeasure) {
         int result = this
-                .unit.convertOneUnitToAnother(this.value,anotherMeasure.unit);
+                .unit.convertOneUnitToAnother(this.value, anotherMeasure.unit);
         return anotherMeasure.value == result;
     }
 
@@ -23,5 +23,9 @@ public class Measurement {
         Measurement that = (Measurement) o;
         return this.isEqualTo(that);
     }
+
+}
+
+public class InvalidUnitComparisonException extends RuntimeException { 
 
 }

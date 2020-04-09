@@ -8,6 +8,12 @@ public  enum Unit{
         unitFactor = factor;
     }
 
+    public static void validateComparison(Measurement m1, Measurement m2) {
+
+
+
+    }
+
     public int convertOneUnitToAnother(double value ,Unit anotherUnit) {
         return (int) ((value * anotherUnit.unitFactor)/this.unitFactor);
     }

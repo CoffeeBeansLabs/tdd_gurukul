@@ -1,7 +1,26 @@
 import  org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class MeasurementTest {
+
+
+    @Test
+    public void validateComparison_shouldThrowException_given1CentimeterAnd1Gram(){
+        Measurement oneCentimeter   =  new Measurement(1,Unit.CENTIMETER);
+        Measurement oneGram   =  new Measurement(1,Unit.GRAM);
+
+        try {
+            Unit.validateComparison(oneCentimeter, oneGram);
+        }
+        catch(Exception e) {
+
+            assert e == InvalidUnitComparisonException
+        }
+
+    }
+
+
     @Test
     public  void  isEqualTo_shouldReturnTrue_given100CmAnd1Meter(){
 
