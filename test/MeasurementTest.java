@@ -47,4 +47,29 @@ public class MeasurementTest {
 
         assertEquals(thousandMeter,oneKilometer);
     }
+
+    @Test(expected = InvalidUnitComparisonException.class )
+//    @Test
+    public  void  isEqualTo_shouldThrowInvalidUnitComparisonException_given1CentimeterAnd1gram() throws InvalidUnitComparisonException {
+
+        Measurement oneCentimeter = new Measurement(1,Unit.CENTIMETER);
+        Measurement oneGram   =  new Measurement(1,Unit.GRAM);
+        oneCentimeter.isEqualTo(oneGram);
+
+    }
+
+    @Test
+    public  void  isEqualTo_shouldReturnFalse_given1CentimeterAnd1Centimeter() throws InvalidUnitComparisonException {
+
+        Measurement oneCentimeter = new Measurement(1,Unit.CENTIMETER);
+        Measurement oneGram   =  new Measurement(1,Unit.CENTIMETER);
+        Boolean result = false;
+        try{
+            result = oneCentimeter.isEqualTo(oneGram);
+        }catch (InvalidUnitComparisonException ex){
+            throw  ex;
+        }
+
+        assertEquals(true,result);
+    }
 }

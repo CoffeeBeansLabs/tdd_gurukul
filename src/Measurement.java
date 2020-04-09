@@ -10,18 +10,23 @@ public class Measurement {
         this.unit = unit;
     }
 
-    public Boolean isEqualTo(Measurement anotherMeasure) {
+    public Boolean isEqualTo(Measurement anotherMeasure) throws InvalidUnitComparisonException {
         int result = this
                 .unit.convertOneUnitToAnother(this.value,anotherMeasure.unit);
         return anotherMeasure.value == result;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Measurement that = (Measurement) o;
-        return this.isEqualTo(that);
+        try {
+            return this.isEqualTo(that);
+        } catch (InvalidUnitComparisonException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
