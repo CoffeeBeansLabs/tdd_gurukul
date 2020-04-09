@@ -25,7 +25,7 @@ public class Measurement {
         map.put(Unit.GM, UnitType.WEIGHT);
         map.put(Unit.KILOGRAM, UnitType.WEIGHT);
 
-        if((this.unit.getUnitType().equals(UnitType.DISTANCE) && measurement.unit.getUnitType().equals(UnitType.WEIGHT)) || (this.unit.getUnitType().equals(UnitType.WEIGHT) && measurement.unit.getUnitType().equals(UnitType.DISTANCE)))
+        if(!(this.unit.getUnitType().equals(measurement.unit.getUnitType())))
         {
             throw new InvalidUnitTypeException("Invalid unit Type Exception");
         }
