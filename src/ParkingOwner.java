@@ -1,4 +1,4 @@
-public class ParkingOwner {
+public class ParkingOwner implements ParkingObserver{
 
     public void notifyParkingAreaFull() {
     }

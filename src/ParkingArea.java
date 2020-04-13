@@ -1,14 +1,22 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class ParkingArea {
     private final int capacity;
-    private final ParkingOwner owner;
 
     ArrayList<Car> carList = new ArrayList<Car>();
+    List<ParkingObserver> parkingObservers = new ArrayList<>();
 
-    public ParkingArea(int capacity, ParkingOwner owner) {
+    public void addObserver(ParkingObserver parkingObserver) {
+        this.parkingObservers.add(parkingObserver);
+    }
+
+    public void removeObserver(ParkingObserver parkingObserver) {
+        this.parkingObservers.remove(parkingObserver);
+    }
+
+    public ParkingArea(int capacity) {
         this.capacity = capacity;
-        this.owner    = owner;
     }
 
     public Boolean isCarAlreadyParked(Car car){
@@ -19,27 +27,38 @@ public class ParkingArea {
         return this.capacity == this.carList.size();
     }
 
-    public void park(Car car) throws carAlreadyInParkingException {
+    public void park(Car car) throws CarAlreadyInParkingException {
         if(isCarAlreadyParked(car)) {
-            throw new carAlreadyInParkingException("Car already parked");
+            throw new CarAlreadyInParkingException("Car already parked");
         }
         this.carList.add(car);
         if(this.checkIfParkingFull()){
-            this.owner.notifyParkingAreaFull();
+            this.notifyParkingAreaFull();
         }
     }
 
+    private void notifyParkingAreaFull() {
+        for(ParkingObserver parkingObserver: this.parkingObservers){
+            parkingObserver.notifyParkingAreaFull();
+        }
+    }
 
-    public void unPark(Car car) throws  carNotInParkingException {
+    private void notifyParkingSpaceAvailable() {
+        for(ParkingObserver parkingObserver: this.parkingObservers){
+            parkingObserver.notifyParkingSpaceAvailable();
+        }
+    }
+
+    public void unPark(Car car) throws CarNotInParkingException {
         boolean parkingFullStatus = this.checkIfParkingFull();
 
         if(isCarAlreadyParked(car) == false) {
-            throw new carNotInParkingException("Car not in parking");
+            throw new CarNotInParkingException("Car not in parking");
         }
 
         this.carList.remove(car);
         if(parkingFullStatus){
-            this.owner.notifyParkingSpaceAvailable();
+            this.notifyParkingSpaceAvailable();
         }
     }
 }
